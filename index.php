@@ -28,11 +28,11 @@ if (isset($_REQUEST['page']) && is_numeric($_REQUEST['page'])) {
 $start = 5 * ($page - 1);
 
 $memos = $db->prepare('SELECT * FROM memos ORDER BY id DESC LIMIT ?, 5');
-$memos->bindParam(1, $_REQUEST['page'], PDO::PARAM_INT);
+$memos->bindParam(1,$start, PDO::PARAM_INT);
 $memos->execute();
 ?>
 <article>
-  <?php while ($memo = $memos->fetch()): ?>
+  <?php while($memo = $memos->fetch()): ?>
     <p><a href="memo.php?id=<?php print($memo['id']); ?>"><?php print(mb_substr($memo['memo'], 0, 50)); ?></a></p>
     <time><?php print($memo['created_at']); ?></time>
     <hr>
@@ -42,7 +42,15 @@ $memos->execute();
     <a href="index.php?page=<?php print($page-1); ?>"><?php print($page-1); ?>ページ目へ</a>
   <?php endif; ?>
     |
-  <a href="index.php?page=<?php print($page+1); ?>"><?php print($page+1); ?>ページ目へ</a>
+  <?php
+  $counts = $db->query('SELECT COUNT(*) as cnt FROM memos');
+  $count = $counts->fetch();
+  // 切り上げの操作をしてあげる事で投稿が5つ以上になった際に次のページに遷移させる
+  $max_page = ceil($count['cnt'] / 5);
+  if ($page < $max_page):
+  ?>
+    <a href="index.php?page=<?php print($page+1); ?>"><?php print($page+1); ?>ページ目へ</a>
+  <?php endif; ?>
 </article>
 
 </main>
