@@ -24,7 +24,14 @@ try {
   echo 'DB接続エラー:'.$e->getMessage();
 }
 
-$memos = $db->query('SELECT * FROM memos WHERE id=1');
+$id = $_REQUEST['id'];
+if (!is_numeric($id) || $id <= 0) {
+  print('1以上の数字で指定してください');
+  exit();
+}
+
+$memos = $db->prepare('SELECT * FROM memos WHERE id=?');
+$memos->execute(array($_REQUEST['id']));
 $memo = $memos->fetch();
 ?>
 <article>
