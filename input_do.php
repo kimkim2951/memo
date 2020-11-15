@@ -19,14 +19,12 @@
 <h2>Practice</h2>
 <pre>
 <?php
-  try {
-    $db = new PDO('mysql:dbname=mydb;host=localhost;port=3306;charset=utf8', 'root', 'root');
-    $statement = $db->prepare('INSERT INTO memos SET memo=?, created_at=NOW()');
+  require('dbconnect.php');
+  $statement = $db->prepare('INSERT INTO memos SET memo=?, created_at=NOW()');
     // 以下の記述をして投稿してきた内容を保存する際に安全を確保して保存する必要がある。
-    $statement->execute(array($_POST['memo']));
-  } catch(PDOException $e) {
-    echo 'DB接続エラー: ' . $e->getMessage();
-  }
+  $statement->execute(array($_POST['memo']));
+  $statement->execute();
+  echo 'メッセージが登録されました';
 ?>
 </pre>
 </main>

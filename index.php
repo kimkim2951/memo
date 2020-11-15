@@ -19,12 +19,7 @@
 <h2>Practice</h2>
 <pre>
 <?php
-try {
-  $db = new PDO('mysql:dbname=mydb;host=localhost;port=3306;charset=utf8','root','root');
-} catch (PDOException $e){
-  echo 'DB接続エラー:'.$e->getMessage();
-}
-
+require('dbconnect.php');
 $memos = $db->query('SELECT * FROM memos ORDER BY id DESC');
 ?>
 <article>
