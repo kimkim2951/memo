@@ -16,7 +16,7 @@
 </header>
  
 <main>
-<h2>Practice</h2>
+<h2>MEMO</h2>
 <pre>
 <?php
 require('dbconnect.php');
