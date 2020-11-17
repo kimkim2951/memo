@@ -12,7 +12,7 @@
 ## :paperclip: 主な使用言語
 <a><img src="https://user-images.githubusercontent.com/67769876/99362437-d70dbe00-28f6-11eb-9d94-bacb3c0fffd7.png" width="70px;" /></a> <!-- PHPのロゴ -->
 <a><img src="https://user-images.githubusercontent.com/67769876/99362766-3b308200-28f7-11eb-9573-00e5b481cccc.png" width="70px;" /></a> <!-- HTMLのロゴ -->
-<a><img src="https://user-images.githubusercontent.com/67769876/99362884-64511280-28f7-11eb-8ce0-9fcc1317c33e.png" width="60px;" /></a> <!-- CSSのロゴ -->
+<a><img src="https://user-images.githubusercontent.com/67769876/99362884-64511280-28f7-11eb-8ce0-9fcc1317c33e.png" width="50px;" /></a> <!-- CSSのロゴ -->
 
 ## :globe_with_meridians: 機能紹介
 - MEMOの投稿・編集・削除が行えます。
